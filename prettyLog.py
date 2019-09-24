@@ -7,7 +7,7 @@ def findDuplicates():
   duplicates = []
   fh = open(fname)
   fout = open("temp.txt", "w")
-  # read through log file, identify lines starting with BibID & rank and push the next line to temp.txt
+  # read through file, extract the line after the line starting with BibID & rank and write to temp file
   with fh as f:
     lines = f.readlines()
     n_lines = len(lines)
@@ -16,8 +16,6 @@ def findDuplicates():
       if line.startswith("	BibID & rank") and \
           n_lines > i + 2 and lines[i + 2].startswith("") :
           duplicates.append(lines[i+1])
-      else :
-          duplicates = ["no duplicates"]
     fout.write(str(duplicates))
 
 def cleanFile():
